@@ -13,12 +13,14 @@
 def f(q):
     q = ''.join(i for i in q if not i.isalpha())   # Удаляем буквы
     brackets = ['()', '[]']  # Список со скобочками
+    """Проверка скобочек"""
     if not q:  # Проверка на пустую строку
         return True
     for z in brackets:  # Проверка скобочек
         q = q.replace(z, '')  # Убираем скобочку
     if q and all([z not in q for z in brackets]):  # Если не правильно
         return False
+    """Запуск рекурсии"""
     return f(q)  # Рекурсия
 
 
