@@ -56,7 +56,7 @@ class TailRecurseException:
     def __init__(self, args, kwargs):
         self.args = args
         self.kwargs = kwargs
-def tail_call_optimized(g):
+def tail_call_optimized(g):SsA
     def func(*args, **kwargs):
         f = sys._getframe()
         while f and f.f_code.co_filename == f:
@@ -79,12 +79,12 @@ def fib(i, current = 0, next = 1):
 """
 if __name__ == '__main__':
     print("Время выполнения функции factorial(): ",
-          timeit(setup=code1, number=10000))
+          timeit(stmt=code1, number=10000))
     print("Время выполнения функции factorial() c"
           " использованием интроспекции стека: ",
-          timeit(setup=code3, number=10000))
+          timeit(stmt=code3, number=10000))
     print("Время выполнения функции fib(): ",
-          timeit(setup=code2, number=10000))
+          timeit(stmt=code2, number=10000))
     print("Время выполнения функции fib() c"
           " использованием интроспекции стека: ",
-          timeit(setup=code4, number=10000))
+          timeit(stmt=code4, number=10000))

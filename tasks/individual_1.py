@@ -10,22 +10,24 @@
 """
 
 
-def f(q):
-    q = ''.join(i for i in q if not i.isalpha())   # Удаляем буквы
-    brackets = ['()', '[]']  # Список со скобочками
+def check_par(s):
     """Проверка скобочек"""
-    if not q:  # Проверка на пустую строку
+    if len(s) == 0:
         return True
-    for z in brackets:  # Проверка скобочек
-        q = q.replace(z, '')  # Убираем скобочку
-    if q and all([z not in q for z in brackets]):  # Если не правильно
-        return False
-    """Запуск рекурсии"""
-    return f(q)  # Рекурсия
+    else:
+        f = s.find('()')
+        x = s.find('[]')
+        s = s.replace('()', '')
+        s = s.replace('[]', '')
+        if f == -1 and x == -1:
+            return False
+        else:
+            return check_par(s[0:-1])
 
 
 if __name__ == '__main__':
-    if f(input('Введите строку:')):  # Ввод строки и запуск функции
+
+    if check_par(input('Введите строку:')):
         print('Скобочки расставлены правильно')
     else:
         print('Скобочки расставлены не правильно')

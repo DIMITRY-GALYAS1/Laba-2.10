@@ -64,16 +64,16 @@ def factorial3(n):
 """
 if __name__ == '__main__':
     print("Время выполнения рекрусивной функции числа Фибоначи: ",
-          timeit(setup=fib1, number=1000))
+          timeit(stmt=fib1, number=2000))
     print("Время выполнения итеративной функции числа Фибоначи: ",
-          timeit(setup=fib2, number=1000))
+          timeit(stmt=fib2, number=2000))
     print("Время выполнения рекрусивной функции числа Фибоначи с"
           " использованием декоратора lru_cache: ",
-          timeit(setup=fib3, number=1000))
+          timeit(stmt=fib3, number=2000))
     print("Время выполнения рекрусивной функции факториала: ",
-          timeit(setup=factorial1, number=1000))
+          timeit(stmt=factorial1, number=2000))
     print("Время выполнения итеративной функции факториала: ",
-          timeit(setup=factorial2, number=10000))
+          timeit(stmt=factorial2, number=10000))
     print("Время выполнения рекрусивной функции факториала с"
           " использованием декоратора lru_cache: ",
-          timeit(setup=factorial3, number=10000))
+          timeit(stmt=factorial3, number=10000))
