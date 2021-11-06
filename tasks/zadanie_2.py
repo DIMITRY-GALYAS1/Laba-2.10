@@ -3,88 +3,27 @@
 
 
 """
-Самостоятельно проработайте пример с оптимизацией хвостовых вызовов в Python. С
-помощью пакета timeit оцените скорость работы функций factorial и fib с
-использованием интроспекции стека и без использования интроспекции стека.
-Приведите полученные результаты в отчет.
+Решить поставленную задачу:
+написать функцию, вычисляющую среднее гармоническое
+своих аргументов a1, a2, ... an
+Если функции передается пустой список аргументов,
+то она должна возвращать значение  None
 """
 
 
-from timeit import timeit
-
-
-code1 = """
-def factorial(n, acc=1):
-    if n == 0:
-        return acc
-    return factorial(n-1, n*acc)
-"""
-code2 = """
-def fib(i, current = 0, next = 1):
-    if i == 0:
-        return current
-    else:
-        return fib(i - 1, next, current + next)
-"""
-code3 = """
-class TailRecurseException:
-    def __init__(self, args, kwargs):
-        self.args = args
-        self.kwargs = kwargs
-def tail_call_optimized(g):
-    def func(*args, **kwargs):
-        f = sys._getframe()
-        while f and f.f_code.co_filename == f:
-            raise TailRecurseException(args, kwargs)
+def average(*x):
+    summa = 0
+    for i in x:
+        if i == 0:
+            return 'В введенном списке есть 0'
         else:
-            while True:
-                try:
-                    return g(*args, **kwargs)
-                except TailRecurseException as e:
-                    args = e.args
-                    kwargs = e.kwargs
-    func.__doc__ = g.__doc__
-    return func
-@tail_call_optimized
-def factorial(n, acc=1):
-    if n == 0:
-        return acc
-    return factorial(n-1, n*acc)
-"""
-code4 = """
-class TailRecurseException:
-    def __init__(self, args, kwargs):
-        self.args = args
-        self.kwargs = kwargs
-def tail_call_optimized(g):SsA
-    def func(*args, **kwargs):
-        f = sys._getframe()
-        while f and f.f_code.co_filename == f:
-            raise TailRecurseException(args, kwargs)
-        else:
-            while True:
-                try:
-                    return g(*args, **kwargs)
-                except TailRecurseException as e:
-                    args = e.args
-                    kwargs = e.kwargs
-    func.__doc__ = g.__doc__
-    return func
-@tail_call_optimized
-def fib(i, current = 0, next = 1):
-    if i == 0:
-        return current
-    else:
-        return fib(i - 1, next, current + next)
-"""
+            summa += 1 / float(i)
+    z = 1 / (1 / len(x) * summa)
+    return z
+
+
 if __name__ == '__main__':
-    print("Время выполнения функции factorial(): ",
-          timeit(stmt=code1, number=10000))
-    print("Время выполнения функции factorial() c"
-          " использованием интроспекции стека: ",
-          timeit(stmt=code3, number=10000))
-    print("Время выполнения функции fib(): ",
-          timeit(stmt=code2, number=10000))
-    print("Время выполнения функции fib() c"
-          " использованием интроспекции стека: ",
-          timeit(stmt=code4, number=10000))
+
+    print("Введите числа в массив через пробел: ")
+    mas = list(map(float, input().split()))
+    print(average(*mas))
