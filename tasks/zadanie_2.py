@@ -12,6 +12,7 @@
 
 
 def average(*x):
+    """Поиск среднего гармонического"""
     summa = 0
     for i in x:
         if i == 0:

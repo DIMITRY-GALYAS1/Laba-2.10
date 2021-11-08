@@ -14,19 +14,28 @@
 
 
 def between(*args):
-
+    """Сумма аргументов между нулевыми аргументами"""
+    # Создание цикла
     for i, x in enumerate(args):
+        # Поиск нулевого аргумента
         if x == 0:
+            # Инициализация счетчика
             z = 0
+            # Цикл для сложения аргументов
             for meaning in args[i + 1:]:
+                # Если найден 0
                 if meaning == 0:
                     break
+                #  Суммируем аргументы
                 else:
                     z += meaning
+            # Передачи значения
             return z
 
 
 if __name__ == '__main__':
+    # Ввод чисел
     print("Введите числа в массив через пробел: ")
     q = list(map(float, input().split()))
+    # Вызов функции
     print(between(*q))

@@ -13,21 +13,18 @@
 
 # Вычисляет среднее геометрическое
 def average(*arg):
-
+    """Поиск среднего геометрического"""
     if arg:
         g = 1.0
-
         for i in arg:
             g *= i
         g = g ** (1/len(arg))
-
         return g
     else:
         return None
 
 
 if __name__ == '__main__':
-
     print("Введите числа в массив через пробел: ")
     mas = list(map(float, input().split()))
     print(average(*mas))
