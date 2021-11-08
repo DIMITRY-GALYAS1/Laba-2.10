@@ -14,13 +14,16 @@
 def average(*x):
     """Поиск среднего гармонического"""
     summa = 0
-    for i in x:
-        if i == 0:
-            return 'В введенном списке есть 0'
-        else:
-            summa += 1 / float(i)
-    z = 1 / (1 / len(x) * summa)
-    return z
+    if x:
+        for i in x:
+            if i == 0:
+                return 'В введенном списке есть 0'
+            else:
+                summa += 1 / float(i)
+        z = 1 / (1 / len(x) * summa)
+        return z
+    else:
+        return None
 
 
 if __name__ == '__main__':
