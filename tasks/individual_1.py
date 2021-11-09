@@ -15,26 +15,24 @@ def between(*args):
     """Сумма аргументов между нулевыми аргументами"""
     # Создание цикла
     for i, x in enumerate(args):
-        # Проверка на наличие 0
-        if 0 not in args:
-            return None
-        # Поиск нулевого аргумента
-        if x == 0:
-            # Инициализация счетчика
-            z = 0
-            # Цикл для сложения аргументов
-            for meaning in args[i + 1:]:
-                # Если найден 0
-                if meaning == 0:
-                    break
-                #  Суммируем аргументы
-                else:
-                    z += meaning
-            # Передачи значения
-            return z
+        if 0 in args:
+            if x == 0:
+                # Инициализация счетчика
+                z = 0
+                # Цикл для сложения аргументов
+                for meaning in args[i + 1:]:
+                    # Если найден 0
+                    if meaning == 0:
+                        break
+                    #  Суммируем аргументы
+                    else:
+                        z += meaning
+                # Передачи значения
+                return z
+        else:
+            return "В списке нет нулей"
     # Если список пустой
-    else:
-        return None
+    return None
 
 
 if __name__ == '__main__':
