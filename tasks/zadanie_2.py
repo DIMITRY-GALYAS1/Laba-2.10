@@ -17,7 +17,7 @@ def average(*x):
     if x:
         for i in x:
             if i == 0:
-                return 'В введенном списке есть 0'
+                return None
             else:
                 summa += 1 / float(i)
         z = 1 / (1 / len(x) * summa)
